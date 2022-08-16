@@ -1,16 +1,16 @@
 from InquirerPy import inquirer
-from InquirerPy.validator import NumberValidator
 
 def valid_length(number):
-  if number >= 8 | number <= 100:
-    return True
+  if number.isnumeric():
+    if int(number) >= 25 | int(number) <= 100:
+      return True
   return False
 
 def question_prompt():
   password_length = inquirer.text(
     message="What should the length of your password be?",
-    validate= lambda result: valid_length(int(result)),
-    invalid_message= "Length must be a number from 8 to 100"
+    validate= lambda result: valid_length(result),
+    invalid_message= "Length must be a number from 25 to 100"
   ).execute()
   if password_length:
     password_length = int(password_length)
@@ -34,11 +34,33 @@ def question_prompt():
     lowercase = True
   else:
     lowercase = False
+  
+  special = inquirer.select(
+    message="Would you like special characters?",
+    choices=["Yes", "No"],
+    default= None
+  ).execute()
+  if special == "Yes":
+    special = True
+  else:
+    special = False
+
+  numbers = inquirer.select(
+    message= "Would you like numbers?",
+    choices= ["Yes", "No"],
+    default= None
+  ).execute()
+  if numbers == "Yes":
+    numbers = True
+  else:
+    numbers = False
 
   choices = {
     "password_length": password_length,
     "uppercase_letters": uppercase,
-    "lowercase_letters": lowercase
+    "lowercase_letters": lowercase,
+    "special_characters": special,
+    "numbers": numbers
   }
 
   return choices
