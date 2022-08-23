@@ -2,7 +2,7 @@ from InquirerPy import inquirer
 
 def valid_length(number):
   if number.isnumeric():
-    if int(number) >= 25 | int(number) <= 100:
+    if int(number) >= 25 & int(number) <= 100:
       return True
   return False
 
