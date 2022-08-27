@@ -2,7 +2,7 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import validates
 import bcrypt
-from app.database import Base, engine
+from database import Base, engine
 
 # Table class for User with column definitions
 class User(Base):
@@ -31,7 +31,6 @@ class User(Base):
         # Used for class testing purposes
         return f"<User username ={self.username} email={self.email}"
 
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 
 # new_user = User(id = 3, username = "msater1003", email = "alex@alex.com")
-# print(new_user.__tablename__)

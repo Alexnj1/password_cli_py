@@ -1,12 +1,12 @@
 from __future__ import print_function, unicode_literals
 from app.database_actions import login
-from prompt import question_prompt
+from prompt import question_prompt, new_user
 from generator import password_generator
+from InquirerPy import inquirer
 
 # from app.database.schemas.User import User
 # from app.database.seeds import add_test
 
-from InquirerPy import inquirer
 
 def length_validator(string):
   if len(string) == 0:
@@ -19,11 +19,12 @@ def app():
 
   choice = inquirer.select(
     message= "Would you like to log in, create a new user, or exit?",
-    choices=["Login", "Exit"],
+    choices=["Login","Create a New User", "Exit"],
     default= None
   ).execute()
 
   if choice == "Login" :
+    # Authenticate the user and run the app
     username = inquirer.text(
       message= "username?",
       validate= lambda string: length_validator(string),
@@ -113,6 +114,19 @@ def app():
       
       """)
       app()
+
+  elif choice == "Create a New User":
+    print(
+      """
+      *************************
+
+          Create a New User
+      
+      *************************
+      """
+    )
+    new_user_profile = new_user()
+    print(new_user_profile)
 
   else: return
 
