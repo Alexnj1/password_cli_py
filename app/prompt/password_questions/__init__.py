@@ -7,6 +7,12 @@ def valid_length(number):
   return False
 
 def question_prompt():
+  password_matches = inquirer.text(
+    message="What is this password for?",
+    validate=lambda result: len(result) <= 100,
+    invalid_message="You must enter a value"
+  ).execute()
+
   password_length = inquirer.text(
     message="What should the length of your password be?",
     validate= lambda result: valid_length(result),
@@ -56,6 +62,7 @@ def question_prompt():
     numbers = False
 
   choices = {
+    "password_matches": password_matches,
     "password_length": password_length,
     "uppercase_letters": uppercase,
     "lowercase_letters": lowercase,

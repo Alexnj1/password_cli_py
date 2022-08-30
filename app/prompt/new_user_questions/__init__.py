@@ -2,7 +2,7 @@ from InquirerPy import inquirer
 
 def validates_email(email):
   if "@" in email:
-    # Doesn't currently work, handling 
+    # Doesn't currently work, might need to be handled elsewhere
     # if len(email) <= 80 & len(email) > 0:
       return True
   return False

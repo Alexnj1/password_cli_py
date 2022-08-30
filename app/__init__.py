@@ -2,6 +2,8 @@ from __future__ import print_function, unicode_literals
 from app.database_actions import login
 from prompt import question_prompt, new_user
 from generator import password_generator
+from database_actions.create import add_user_db, add_password_db
+# from helpers import user_profile
 from InquirerPy import inquirer
 
 # from app.database.schemas.User import User
@@ -89,13 +91,14 @@ def app():
             choices=["Yes", "No"],
             default=None
           ).execute()
-
+          
           if save == "Yes":
-            # save password function, the re call the function
+            # save password function, the re call the app
 
-            # for now...
-            print("Saved!")
+            add_password_db(new_password, password_choices["password_matches"])
+            
             app_choice()
+
           else: app_choice()
         elif choice == "View Saved Passwords":
           # saved database passwords function
@@ -126,7 +129,7 @@ def app():
       """
     )
     new_user_profile = new_user()
-    print(new_user_profile)
+    add_user_db(new_user_profile)
 
   else: return
 

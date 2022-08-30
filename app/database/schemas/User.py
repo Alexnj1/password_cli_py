@@ -8,7 +8,7 @@ from database import Base, engine
 class User(Base):
     __tablename__ = "Users_1"
     # extend_existing = True
-    id = Column(Integer(), primary_key = True, auto_increment = True)
+    id = Column(Integer(), primary_key = True)
     username = Column(String(50), nullable= False, unique = True)
     email = Column(String(80), unique = True, nullable = False)
     password = Column(String(100), nullable = False)
@@ -26,11 +26,12 @@ class User(Base):
             raise ValueError("failed simple email validation")
         return address
 
-    def __repr__(self):
-        # Returns string representation of User class
-        # Used for class testing purposes
-        return f"<User username ={self.username} email={self.email}"
 
-# Base.metadata.create_all(engine)
+    # def __repr__(self):
+    #     # Returns string representation of User class
+    #     # Used for class testing purposes
+    #     return f"<User username ={self.username} email={self.email}"
+
+Base.metadata.create_all(engine)
 
 # new_user = User(id = 3, username = "msater1003", email = "alex@alex.com")
