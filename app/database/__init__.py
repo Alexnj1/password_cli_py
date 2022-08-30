@@ -10,7 +10,7 @@ Base = declarative_base()
 
 # Create an engine to specify the database to be used as well as options for the database
 dotenv.load_dotenv()
-engine = create_engine(os.getenv("DB_URL"), echo = True)
+engine = create_engine(os.getenv("DB_URL"))
 
 # Session class to inherit from to be able to carry out database transactions, CRUD
 Session = sessionmaker()

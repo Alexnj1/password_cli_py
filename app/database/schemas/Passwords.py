@@ -16,4 +16,9 @@ class Password(Base):
 
   user = relationship('User')
 
+  def __repr__(self):
+        # Returns string representation of User class
+        # Used for class testing purposes
+        return f"<User password ={self.password} matches={self.matches}"
+
 Base.metadata.create_all(engine)

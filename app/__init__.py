@@ -1,5 +1,6 @@
 from __future__ import print_function, unicode_literals
 from app.database_actions import login
+from database_actions.read import view_user_passwords
 from prompt import question_prompt, new_user
 from generator import password_generator
 from database_actions.create import add_user_db, add_password_db
@@ -102,8 +103,10 @@ def app():
           else: app_choice()
         elif choice == "View Saved Passwords":
           # saved database passwords function
-          print("Saved passwords...")
-          app_choice()
+          view_user_passwords()
+
+          # app_choice()
+          return
       
       app_choice()
       

@@ -27,22 +27,21 @@ def add_user_db(profile):
     """)
 
 def add_password_db(new_password, password_matches):
-  # user = session.query(User).filter_by(id = user_profile["id"])
   new_password = Password(id = id, password = new_password, matches = password_matches, belongs_to = user_profile["id"])
 
-  # try: 
-  session.add(new_password)
-  session.commit()
-    # print("""
-    # ***************************
+  try: 
+    session.add(new_password)
+    session.commit()
+    print("""
+    ***************************
 
-    #     NEW PASSWORD ADDED!
+        NEW PASSWORD ADDED!
 
-    # ***************************
-    # """)
-  # except:
-  #   print("""
+    ***************************
+    """)
+  except:
+    print("""
     
-  #   ********** There was a problem **********
+    ********** There was a problem **********
     
-  #   """)
+    """)
