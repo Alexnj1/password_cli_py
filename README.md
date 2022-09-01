@@ -76,5 +76,5 @@
   ## License
   
   
-  #### There is no licensing information for this project.
+  #### For full license documentation, see [LICENSE](/LICENSE)
   
